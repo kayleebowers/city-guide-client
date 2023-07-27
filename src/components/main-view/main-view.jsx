@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ActivitiesCard } from "../activities-card/activities-card";
 import { Row, Col } from "react-bootstrap";
 import { ActivityView } from "../activity-view/activity-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -38,6 +39,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
+      <NavigationBar />
       <Row>
         <Routes>
           {/* route to homepage */}
