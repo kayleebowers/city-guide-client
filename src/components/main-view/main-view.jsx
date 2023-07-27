@@ -9,7 +9,7 @@ export const MainView = () => {
     const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
 
     //fetch all activities from api and assign them to activities state
-    fetch(`server/activities`
+    fetch(`${server}/activities`)
         .then((response) => response.json())
         .then((activities) => {
             const activitiesFromApi = activities.map((activity) => {
@@ -27,12 +27,18 @@ export const MainView = () => {
             setActivities(activitiesFromApi);
         }).catch((error) => {
             console.error(error);
-        })
-    );
+        });
 
   return (
     <>
-      <h1>Pegasus City Guide</h1>
+      <h1>Activities</h1>
+      {activities.map((activity) => {
+        return (
+            <div>
+                <p>{activity.Name}</p>
+            </div>
+        )
+      })}
     </>
   );
 };
