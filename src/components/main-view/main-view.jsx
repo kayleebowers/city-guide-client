@@ -17,25 +17,25 @@ export const MainView = () => {
   //fetch all activities from api and assign them to activities state
   useEffect(() => {
     fetch(`${server}/activities`)
-    .then((response) => response.json())
-    .then((activities) => {
-      const activitiesFromApi = activities.map((activity) => {
-        return {
-          _id: activity._id,
-          Name: activity.Name,
-          Description: activity.Description,
-          Type: activity.Type,
-          ImagePath: activity.ImagePath,
-          Price: activity.Price,
-          Website: activity.Website,
-          Address: activity.Address,
-        };
+      .then((response) => response.json())
+      .then((activities) => {
+        const activitiesFromApi = activities.map((activity) => {
+          return {
+            _id: activity._id,
+            Name: activity.Name,
+            Description: activity.Description,
+            Type: activity.Type,
+            ImagePath: activity.ImagePath,
+            Price: activity.Price,
+            Website: activity.Website,
+            Address: activity.Address,
+          };
+        });
+        setActivities(activitiesFromApi);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-      setActivities(activitiesFromApi);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
   }, []);
 
   return (
@@ -77,11 +77,13 @@ export const MainView = () => {
             }
           />
           {/* route to arts view */}
-          <Route path="/activities/:type" element={
-            <>
-              < ArtsView activities={activities} />
-            </>
-          }
+          <Route
+            path="/activities/types/Arts"
+            element={
+              <>
+                <ArtsView activities={activities} />
+              </>
+            }
           />
         </Routes>
       </Row>

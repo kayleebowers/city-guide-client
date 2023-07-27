@@ -16,7 +16,7 @@ export const NavigationBar = () => {
                 <Nav.Link href="#link">Profile</Nav.Link>
                 {/* dropdown menu */}
                 <NavDropdown title="Explore the city" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Entertainment</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={`/activities/types/Arts`}>Entertainment</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     Restaurants
                   </NavDropdown.Item>
