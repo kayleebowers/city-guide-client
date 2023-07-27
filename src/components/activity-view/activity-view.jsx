@@ -6,8 +6,7 @@ export const ActivityView = ({ activities}) => {
 
     return (
         <>
-            <p>{activity.Name}</p>
-            <p>{activity.Description}</p>
+            <p>{activity.name}</p>
         </>
     )
 }
