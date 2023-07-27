@@ -1,10 +1,12 @@
 import { Col, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 
 export const ActivitiesCard = ({ activity }) => {
   return (
     <>
+        <Link to={`/activities/${encodeURIComponent(activity._id)}`}>
       <Button>
         <Card style={{ width: "20rem" }}>
           <Card.Img
@@ -18,6 +20,7 @@ export const ActivitiesCard = ({ activity }) => {
           </Card.Body>
         </Card>
       </Button>
+      </Link>
     </>
   );
 };

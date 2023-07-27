@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ActivitiesCard } from "../activities-card/activities-card";
 import { Row, Col } from "react-bootstrap";
+import { ActivityView } from "../activity-view/activity-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -35,27 +36,42 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-    <Row>
-      <Routes>
-        {/* route to homepage */}
-        <Route
-          path="/"
-          element={
-            <>
-              <h1>Activities</h1>
-              {activities.map((activity) => {
-                return (
-                  <>
-                    <Col xs={12} s={8} md={4} className="m-2" key={activity._id}>
+      <Row>
+        <Routes>
+          {/* route to homepage */}
+          <Route
+            path="/"
+            element={
+              <>
+                <h1>Activities</h1>
+                {activities.map((activity) => {
+                  return (
+                    <>
+                      <Col
+                        xs={12}
+                        s={8}
+                        md={4}
+                        className="m-2"
+                        key={activity._id}
+                      >
                         <ActivitiesCard activity={activity} />
-                    </Col>
-                  </>
-                );
-              })}
-            </>
-          }
-        />
-      </Routes>
+                      </Col>
+                    </>
+                  );
+                })}
+              </>
+            }
+          />
+          {/* route to activity view */}
+          <Route
+            path="/activities/:id"
+            element={
+              <>
+                <ActivityView activities={activities} />
+              </>
+            }
+          />
+        </Routes>
       </Row>
     </BrowserRouter>
   );
