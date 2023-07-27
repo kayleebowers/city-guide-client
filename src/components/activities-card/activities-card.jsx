@@ -1,3 +1,5 @@
+import Card from 'react-bootstrap/Card';
+
 export const ActivitiesCard = ({ activity }) => {
     return (
         <>
