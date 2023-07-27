@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ActivitiesCard } from "../activities-card/activities-card";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -42,9 +43,9 @@ export const MainView = () => {
               <h1>Activities</h1>
               {activities.map((activity) => {
                 return (
-                  <div>
-                    <p>{activity.Name}</p>
-                  </div>
+                  <>
+                    <ActivitiesCard key={activity._id} activity={activity} />
+                  </>
                 );
               })}
             </>
