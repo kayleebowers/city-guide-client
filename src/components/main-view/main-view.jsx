@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ActivitiesCard } from "../activities-card/activities-card";
+import { Row, Col } from "react-bootstrap";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -34,6 +35,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
+    <Row>
       <Routes>
         {/* route to homepage */}
         <Route
@@ -44,7 +46,9 @@ export const MainView = () => {
               {activities.map((activity) => {
                 return (
                   <>
-                    <ActivitiesCard key={activity._id} activity={activity} />
+                    <Col xs={12} s={8} md={4} className="m-2" key={activity._id}>
+                        <ActivitiesCard activity={activity} />
+                    </Col>
                   </>
                 );
               })}
@@ -52,6 +56,7 @@ export const MainView = () => {
           }
         />
       </Routes>
+      </Row>
     </BrowserRouter>
   );
 };
