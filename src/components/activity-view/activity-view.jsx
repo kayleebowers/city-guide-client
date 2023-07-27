@@ -1,13 +1,13 @@
 import { useParams } from "react-router";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 export const ActivityView = ({ activities }) => {
   //get route parameter
   const { id } = useParams();
   const activity = activities.find((activity) => activity._id === id);
-
-  console.log(activities);
+  console.log(activity);
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -19,7 +19,9 @@ export const ActivityView = ({ activities }) => {
           <Card.Text>{activity.Address} </Card.Text>
           <Card.Text>{activity.Website} </Card.Text>
           <Card.Text>{activity.Type} </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Link to={`/`}>
+            <Button variant="primary">Back</Button>
+          </Link>
         </Card.Body>
       </Card>
     </>
