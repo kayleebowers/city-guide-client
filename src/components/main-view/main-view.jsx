@@ -5,6 +5,7 @@ import { ActivitiesCard } from "../activities-card/activities-card";
 import { Row, Col } from "react-bootstrap";
 import { ActivityView } from "../activity-view/activity-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ArtsView } from "../navigation-bar/activity-type/arts-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -74,6 +75,13 @@ export const MainView = () => {
                 <ActivityView activities={activities} />
               </>
             }
+          />
+          {/* route to arts view */}
+          <Route path="/activities/:type" element={
+            <>
+              < ArtsView activities={activities} />
+            </>
+          }
           />
         </Routes>
       </Row>
