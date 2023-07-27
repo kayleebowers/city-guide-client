@@ -8,6 +8,7 @@ export const MainView = () => {
     //assign server variable 
     const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
 
+    //fetch all activities from api and assign them to activities state
     fetch(`server/activities`
         .then((response) => response.json())
         .then((activities) => {
@@ -28,7 +29,7 @@ export const MainView = () => {
             console.error(error);
         })
     );
-    
+
   return (
     <>
       <h1>Pegasus City Guide</h1>
