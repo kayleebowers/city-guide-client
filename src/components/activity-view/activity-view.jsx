@@ -7,7 +7,7 @@ export const ActivityView = ({ activities }) => {
   //get route parameter
   const { id } = useParams();
   const activity = activities.find((activity) => activity._id === id);
-  console.log(activity);
+
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -17,11 +17,13 @@ export const ActivityView = ({ activities }) => {
           <Card.Text>{activity.Description} </Card.Text>
           <Card.Text>{activity.Price} </Card.Text>
           <Card.Text>{activity.Address} </Card.Text>
-          <Card.Text>{activity.Website} </Card.Text>
           <Card.Text>{activity.Type} </Card.Text>
           <Link to={`/`}>
             <Button variant="primary">Back</Button>
           </Link>
+          <a href={activity.Website} target="_blank">
+            <Button variant="primary">Visit website</Button>
+          </a>
         </Card.Body>
       </Card>
     </>
