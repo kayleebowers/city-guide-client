@@ -1,9 +1,9 @@
 import React from "react";
 
 export const MainView = () => {
-    return (
-        <>
-            <h1>Testing</h1>
-        </>
-    )
-}
+  return (
+    <>
+      <h1>MainView</h1>
+    </>
+  );
+};
