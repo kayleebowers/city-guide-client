@@ -13,7 +13,8 @@ export const MainView = () => {
   const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
 
   //fetch all activities from api and assign them to activities state
-  fetch(`${server}/activities`)
+  useEffect(() => {
+    fetch(`${server}/activities`)
     .then((response) => response.json())
     .then((activities) => {
       const activitiesFromApi = activities.map((activity) => {
@@ -33,6 +34,7 @@ export const MainView = () => {
     .catch((error) => {
       console.error(error);
     });
+  }, []);
 
   return (
     <BrowserRouter>
