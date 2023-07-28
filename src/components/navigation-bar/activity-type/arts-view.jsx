@@ -2,15 +2,16 @@ import { useParams } from "react-router";
 import { Col } from "react-bootstrap";
 
 export const ArtsView = ({activities}) => {
-// const { type } = useParams();
-const arts = activities.filter((activity) => activity.Type === "Arts");
-console.log(arts);
+const { type } = useParams();
+console.log(type);
+const events = activities.filter((activity) => activity.Type === type);
+console.log(events);
 return (
     <>
-        {arts.map((art) => {
+        {events.map((event) => {
         return (
-            <Col key={art._id}>
-            <h1>{art.Name}</h1>
+            <Col key={event._id}>
+            <h1>{event.Name}</h1>
             </Col>
         );
     }

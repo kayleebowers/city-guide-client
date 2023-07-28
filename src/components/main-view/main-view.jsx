@@ -78,7 +78,7 @@ export const MainView = () => {
           />
           {/* route to arts view */}
           <Route
-            path="/activities/types/Arts"
+            path="/activities/types/:type"
             element={
               <>
                 <ArtsView activities={activities} />
