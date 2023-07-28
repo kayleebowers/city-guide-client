@@ -1,10 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 export const LoginView = ({ onLogin, server }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -26,9 +28,10 @@ export const LoginView = ({ onLogin, server }) => {
         //check for successful response
         .then((response) => {
             if (response.ok) {
-                alert("Login successful")
+                alert("Login successful");
+                navigate("/users/:id");
             } else {
-                alert("Account not found")
+                alert("Account not found");
             }
         }).catch((error) => {
             alert("Something went wrong");

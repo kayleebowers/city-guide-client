@@ -30,7 +30,7 @@ export const SignUpView = ({server}) => {
         }).then((response) => {
             if (response.ok) {
                 alert('Sign up successful');
-                navigate("/login");
+                navigate("/users/:id");
             } else {
                 alert("Sign up failed");
             }
