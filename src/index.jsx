@@ -10,6 +10,7 @@ const App = () => {
     <>
       <Container>
         <MainView />
+        <a target="_blank" href="https://icons8.com/icon/HH1wWvmLSFYK/pegasus">Pegasus</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
       </Container>
     </>
   );
