@@ -8,6 +8,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { TypeView } from "../type-view/type-view";
 import { LoginView } from "../login-view/login-view";
 import { SignUpView } from "../sign-up-view/sign-up-view";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -41,13 +42,7 @@ export const MainView = () => {
   }, []);
 
   //setUser with login
-  const onLogin = (user) => {
-    if (user) {
-      setUser(user);
-    } else {
-      alert("Login was unsuccessful");
-    }
-  }
+  const onLogin = (user) => setUser(user);
 
   //remove user with logout
   const onLogout = (user) => {
@@ -119,6 +114,15 @@ export const MainView = () => {
             element={
               <>
                 <SignUpView server={server} />
+              </>
+            }
+          />
+          {/* route to profile view */}
+          < Route 
+            path="/users/:id"
+            element={
+              <>
+                <ProfileView user={user}/>
               </>
             }
           />

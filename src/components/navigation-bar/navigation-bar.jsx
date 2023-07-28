@@ -17,7 +17,7 @@ export const NavigationBar = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link href="#link">Profile</Nav.Link>
+            <Nav.Link as={Link} to="/users/:id">Profile</Nav.Link>
             {/* dropdown menu */}
             <NavDropdown title="Explore the city" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to={`/activities/types/Arts`}>
@@ -31,6 +31,7 @@ export const NavigationBar = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        {/* user routes */}
         <Nav>
           <Nav.Link as={Link} to="/login">Login</Nav.Link>
           <Nav.Link as={Link} to="/users">Sign up</Nav.Link>
