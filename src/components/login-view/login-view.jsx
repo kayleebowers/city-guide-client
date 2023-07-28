@@ -29,8 +29,11 @@ export const LoginView = ({ onLogin, server }) => {
         .then((response) => response.json())
         .then((data) => {
             if (data.user) {
+                //add data to local storage
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token)
                 onLogin(data.user, data.token);
-                navigate("/users/:id");
+                navigate(`/users/${user._id}`);
             } else {
                 alert("Account not found");
             }
