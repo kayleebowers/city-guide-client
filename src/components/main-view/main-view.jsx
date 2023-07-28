@@ -5,7 +5,7 @@ import { ActivitiesCard } from "../activities-card/activities-card";
 import { Row, Col } from "react-bootstrap";
 import { ActivityView } from "../activity-view/activity-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { ArtsView } from "../navigation-bar/activity-type/arts-view";
+import { ArtsView } from "../navigation-bar/activity-type/type-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
