@@ -40,7 +40,7 @@ export const MainView = () => {
   }, []);
 
   //setUser with login
-  const handleLogin = (user) => {
+  const onLogin = (user) => {
     if (user) {
       setUser(user);
     } else {
@@ -49,7 +49,7 @@ export const MainView = () => {
   }
 
   //remove user with logout
-  const handleLogout = (user) => {
+  const onLogout = (user) => {
     const navigate = useNavigate();
     setUser(null);
     navigate("/");
@@ -108,7 +108,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                <LoginView handleLogin={handleLogin} />
+                <LoginView onLogin={onLogin} />
               </>
             }
           />
