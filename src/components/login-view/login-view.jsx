@@ -2,9 +2,36 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-export const LoginView = ({ onLogin }) => {
+export const LoginView = ({ onLogin, server }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        
+        //request being sent to api
+        const data = {
+            Username: username,
+            Password: password
+        }
+
+        //get matching user info from api 
+        fetch(`${server}/login`, {
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        //check for successful response
+        .then((response) => {
+            if (response.ok) {
+                alert("Login successful")
+            } else {
+                alert("Account not found")
+            }
+        }).catch((error) => {
+            alert("Something went wrong");
+            console.error(error);
+        })
+    }    
 
     return (
         <Form>

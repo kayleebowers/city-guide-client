@@ -108,7 +108,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                <LoginView onLogin={onLogin} />
+                <LoginView onLogin={onLogin} server={server} />
               </>
             }
           />
