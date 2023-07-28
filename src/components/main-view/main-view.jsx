@@ -41,9 +41,6 @@ export const MainView = () => {
       });
   }, []);
 
-  //setUser with login
-  const onLogin = (user) => setUser(user);
-
   //remove user with logout
   const onLogout = (user) => {
     const navigate = useNavigate();
@@ -104,7 +101,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                <LoginView onLogin={onLogin} server={server} />
+                <LoginView onLogin={(user) => setUser(user)} server={server} />
               </>
             }
           />
