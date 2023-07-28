@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
@@ -11,6 +12,9 @@ export const TypeView = ({ activities }) => {
         {events.map((slide) => {
           return (
             <Carousel.Item key={slide._id}>
+            <Link to={`/activities/${slide._id}`}>
+
+                
               <img
                 className="w-100"
                 src={slide.ImagePath}
@@ -20,6 +24,8 @@ export const TypeView = ({ activities }) => {
                 <h3>{slide.Name}</h3>
                 <p>{slide.Description}</p>
               </Carousel.Caption>
+              </Link>
+
             </Carousel.Item>
           );
         })}

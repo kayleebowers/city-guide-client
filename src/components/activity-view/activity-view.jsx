@@ -19,7 +19,7 @@ export const ActivityView = ({ activities }) => {
           <Card.Text>{activity.Address} </Card.Text>
           <Card.Text>{activity.Type} </Card.Text>
           <Link to={`/`}>
-            <Button variant="primary">Back</Button>
+            <Button variant="primary">More activities</Button>
           </Link>
           <a href={activity.Website} target="_blank">
             <Button variant="primary">Visit website</Button>
