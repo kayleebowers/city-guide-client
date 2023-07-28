@@ -3,14 +3,15 @@ import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 import { useNavigate } from 'react-router';
 
-export const SignUpView = () => {
+export const SignUpView = ({server}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const navigate = useNavigate();
+
     const handleSignUp = (e) => {
         e.preventDefault();
-        const navigate = useNavigate();
 
         //define request body
         const data = {
@@ -21,8 +22,11 @@ export const SignUpView = () => {
 
         //Post to api to create new user
         fetch(`${server}/users`, {
-            method: POST,
-            body: JSON.stringify(data)
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         }).then((response) => {
             if (response.ok) {
                 alert('Sign up successful');

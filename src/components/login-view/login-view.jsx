@@ -18,7 +18,10 @@ export const LoginView = ({ onLogin, server }) => {
         //get matching user info from api 
         fetch(`${server}/login`, {
             method: "POST",
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
         //check for successful response
         .then((response) => {
