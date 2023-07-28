@@ -7,6 +7,7 @@ import { ActivityView } from "../activity-view/activity-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { TypeView } from "../type-view/type-view";
 import { LoginView } from "../login-view/login-view";
+import { SignUpView } from "../sign-up-view/sign-up-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -109,6 +110,15 @@ export const MainView = () => {
             element={
               <>
                 <LoginView onLogin={onLogin} server={server} />
+              </>
+            }
+          />
+          {/* route to sign up */}
+          <Route 
+            path="/users"
+            element={
+              <>
+                <SignUpView server={server} />
               </>
             }
           />
