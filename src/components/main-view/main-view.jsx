@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { ActivityView } from "../activity-view/activity-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { TypeView } from "../type-view/type-view";
+import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
@@ -53,7 +54,7 @@ export const MainView = () => {
     setUser(null);
     navigate("/");
   }
-  
+
   return (
     <BrowserRouter>
       <NavigationBar />
@@ -99,6 +100,15 @@ export const MainView = () => {
             element={
               <>
                 <TypeView activities={activities} />
+              </>
+            }
+          />
+          {/* route to login */}
+          <Route 
+            path="/login"
+            element={
+              <>
+                <LoginView handleLogin={handleLogin} />
               </>
             }
           />
