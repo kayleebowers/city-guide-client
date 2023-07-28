@@ -1,12 +1,39 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useState } from "react";
+import { useNavigate } from 'react-router';
 
 export const SignUpView = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
-    const handleSignUp = () => {
-        return;
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const navigate = useNavigate();
+
+        //define request body
+        const data = {
+            Username: username,
+            Password: password,
+            Email: email
+        }
+
+        //Post to api to create new user
+        fetch(`${server}/users`, {
+            method: POST,
+            body: JSON.stringify(data)
+        }).then((response) => {
+            if (response.ok) {
+                alert('Sign up successful');
+                navigate("/login");
+            } else {
+                alert("Sign up failed");
+            }
+        }).catch((error) => {
+            console.error(error);
+            alert("Something went wrong");
+        })
     }
 
     return (
