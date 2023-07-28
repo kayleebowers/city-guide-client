@@ -1,5 +1,5 @@
-export const ProfileView = () => {
+export const ProfileView = ({user}) => {
     return (
-        <h1>Profile</h1>
+        <h1>{user.Username}</h1>
     )
 }

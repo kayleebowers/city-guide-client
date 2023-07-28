@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
-export const LoginView = ({ onLogin, server }) => {
+export const LoginView = ({ onLogin, server, user }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const LoginView = ({ onLogin, server }) => {
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token)
                 onLogin(data.user, data.token);
-                navigate(`/users/${user._id}`);
+                navigate("/users/:id");
             } else {
                 alert("Account not found");
             }

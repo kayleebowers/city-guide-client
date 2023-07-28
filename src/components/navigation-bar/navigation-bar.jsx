@@ -22,7 +22,7 @@ export const NavigationBar = ({onLogout, user}) => {
               <Nav.Link as={Link} to="/login">Profile</Nav.Link>
             )}
             { user && (
-              <Nav.Link as={Link} to="/users/:id">Profile</Nav.Link>
+              <Nav.Link as={Link} to={`/users/${user._id}`}>Profile</Nav.Link>
             )}
             {/* dropdown menu */}
             <NavDropdown title="Explore the city" id="basic-nav-dropdown">

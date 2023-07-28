@@ -113,6 +113,7 @@ export const MainView = () => {
                   } 
                  } 
                  server={server}
+                 user={user}
                 />
               </>
             }
