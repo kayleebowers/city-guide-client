@@ -25,10 +25,9 @@ export const LoginView = ({ onLogin, server }) => {
                 "Content-Type": "application/json"
             }
         })
-        //check for successful response
+        //get json object to extract user and JWT
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             if (data.user) {
                 onLogin(data.user, data.token);
                 navigate("/users/:id");

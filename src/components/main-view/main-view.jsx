@@ -13,6 +13,7 @@ import { ProfileView } from "../profile-view/profile-view";
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   //assign server variable
   const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
@@ -44,6 +45,7 @@ export const MainView = () => {
   //remove user with logout
   const onLogout = (user) => {
     setUser(null);
+    setToken(null);
   }
 
   return (
@@ -99,7 +101,13 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                <LoginView onLogin={(user) => setUser(user)} server={server} />
+                <LoginView onLogin={(user, token) => {
+                  setUser(user);
+                  setToken(token);
+                  } 
+                 } 
+                 server={server}
+                />
               </>
             }
           />
