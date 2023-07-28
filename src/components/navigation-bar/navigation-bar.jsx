@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
-export const NavigationBar = () => {
+export const NavigationBar = ({onLogout, user}) => {
   return (
     <Navbar expand="md" className="bg-body-tertiary">
       <Container>
@@ -33,8 +33,15 @@ export const NavigationBar = () => {
         </Navbar.Collapse>
         {/* user routes */}
         <Nav>
-          <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          <Nav.Link as={Link} to="/users">Sign up</Nav.Link>
+          { user && (
+            <Nav.Link as={Link} to="/" onClick={onLogout}>Logout</Nav.Link>
+          )}
+          { !user && (
+            <>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              <Nav.Link as={Link} to="/users">Sign up</Nav.Link>
+            </>
+          )}
         </Nav>
       </Container>
     </Navbar>

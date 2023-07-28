@@ -43,14 +43,12 @@ export const MainView = () => {
 
   //remove user with logout
   const onLogout = (user) => {
-    const navigate = useNavigate();
     setUser(null);
-    navigate("/");
   }
 
   return (
     <BrowserRouter>
-      <NavigationBar />
+      <NavigationBar onLogout={onLogout} user={user} />
       <Row>
         <Routes>
           {/* route to homepage */}
