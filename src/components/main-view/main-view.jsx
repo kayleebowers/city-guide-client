@@ -12,8 +12,13 @@ import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+
+  //set user and token state to local storage values as default
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   //assign server variable
   const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
@@ -46,6 +51,7 @@ export const MainView = () => {
   const onLogout = (user) => {
     setUser(null);
     setToken(null);
+    localStorage.clear();
   }
 
   return (
