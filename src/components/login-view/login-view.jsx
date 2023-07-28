@@ -26,14 +26,12 @@ export const LoginView = ({ onLogin, server }) => {
             }
         })
         //check for successful response
-        .then((response) => {
-            if (response.ok) {
-                onLogin(username);
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            if (data.user) {
+                onLogin(data.user, data.token);
                 navigate("/users/:id");
-                // .then((data) => {
-                //     if (data.user) {
-                //         onLogin(user);
-                //         navigate("/users/:id");
             } else {
                 alert("Account not found");
             }
