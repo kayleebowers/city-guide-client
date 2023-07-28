@@ -1,11 +1,10 @@
 import { useParams } from "react-router";
 import { Col } from "react-bootstrap";
+import { Carousel, ExampleCarouselImage } from 'react-bootstrap';
 
-export const ArtsView = ({activities}) => {
+export const TypeView = ({activities}) => {
 const { type } = useParams();
-console.log(type);
 const events = activities.filter((activity) => activity.Type === type);
-console.log(events);
 return (
     <>
         {events.map((event) => {
