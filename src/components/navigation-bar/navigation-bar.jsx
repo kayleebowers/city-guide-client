@@ -31,6 +31,9 @@ export const NavigationBar = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        <Nav>
+          <Nav.Link as={Link} to="/login">Login</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );
