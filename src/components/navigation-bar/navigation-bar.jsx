@@ -33,6 +33,7 @@ export const NavigationBar = () => {
         </Navbar.Collapse>
         <Nav>
           <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          <Nav.Link as={Link} to="/users">Sign up</Nav.Link>
         </Nav>
       </Container>
     </Navbar>
