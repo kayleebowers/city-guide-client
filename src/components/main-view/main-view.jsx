@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ActivitiesCard } from "../activities-card/activities-card";
 import { Row, Col } from "react-bootstrap";
@@ -38,6 +38,22 @@ export const MainView = () => {
       });
   }, []);
 
+  //setUser with login
+  const handleLogin = (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      alert("Login was unsuccessful");
+    }
+  }
+
+  //remove user with logout
+  const handleLogout = (user) => {
+    const navigate = useNavigate();
+    setUser(null);
+    navigate("/");
+  }
+  
   return (
     <BrowserRouter>
       <NavigationBar />
