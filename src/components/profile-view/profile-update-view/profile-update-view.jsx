@@ -2,11 +2,40 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 
-export const ProfileUpdate = ({user}) => {
+export const ProfileUpdate = ({user, server}) => {
+    const [username, setUsername] = useState(user.Username);
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState(user.Email);
+
     const handleUpdate = (e) => {
         e.preventDefault();
 
+        const data = {
+            Username: username,
+            Password: password,
+            Email: email
+        };
 
+        fetch(`${server}/users/${user._id}`, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/JSON",
+                Authorization: `Bearer: ${token}`
+            }
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("Your profile was updated");
+                    response.json();
+                }
+            }).then((data) => {
+                console.log(data);
+                localStorage.setItem("user", JSON.stringify(data));
+                setUsername(user);
+            }).catch((error) => {
+                console.error("Profile did not update");
+            })
     }
     return (
         <Form onSubmit={handleUpdate}>
