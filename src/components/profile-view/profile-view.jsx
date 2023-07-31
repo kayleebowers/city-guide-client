@@ -1,5 +1,9 @@
+import { ProfileUpdate } from "./profile-update-view/profile-update-view"
+
 export const ProfileView = ({user}) => {
     return (
-        <h1>{user.Username}</h1>
+        <>
+            <ProfileUpdate user={user} />
+        </>
     )
 }
