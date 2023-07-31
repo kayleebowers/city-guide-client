@@ -8,7 +8,7 @@ import "./index.scss";
 const App = () => {
   return (
     <>
-      <Container>
+      <Container fluid>
         <MainView />
       </Container>
     </>
