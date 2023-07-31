@@ -1,4 +1,5 @@
 import { ProfileUpdate } from "./profile-update-view/profile-update-view";
+import { Todo } from "../todo-view/todo-view";
 
 export const ProfileView = ({ user, server, token, setUser, onLogout }) => {
   
@@ -11,6 +12,7 @@ export const ProfileView = ({ user, server, token, setUser, onLogout }) => {
         setUser={setUser}
         onLogout={onLogout}
       />
+      <Todo user={user} server={server} token={token}/>
     </>
   );
 };
