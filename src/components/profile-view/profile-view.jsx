@@ -46,8 +46,8 @@ export const ProfileView = ({ user, server, token, setUser, onLogout }) => {
         {/* full deletion modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
+            <Modal.Title>Are you sure you want to delete your account?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete your account?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back
