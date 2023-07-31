@@ -2,8 +2,50 @@ import { Col, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-export const ActivitiesCard = ({ activity }) => {
+export const ActivitiesCard = ({ activity, user, setUser }) => {
+  //track todo items
+  const [todo, setTodo] = useState(user.Todos.includes(activity._id));
+
+  // add activity to todo list
+  const addToTodo = () => {
+    fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
+      method: "POST",
+      headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+      }
+      }).then((response) => response.json())
+        .then((data) => {
+          alert("The activity was added to your todo list");
+          localStorage.setItem("user", JSON.stringify(data));
+          setUser(user);
+          setTodo(true);
+        }).catch((error) => {
+          console.error(error);
+        })
+        }
+
+  //remove activity from todo list
+  const deleteTodo = () => {
+    fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
+      method: "DELETE",
+      headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+      }
+      }).then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem("user", JSON.stringify(data));
+          setUser(user);
+          setTodo(false);
+          alert("The activity was deleted from your todo list");
+        }).catch((error) => {
+          console.error(error);
+        })
+      }
+
   return (
     <>
       <Link to={`/activities/${activity._id}`}>

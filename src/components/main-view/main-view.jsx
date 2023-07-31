@@ -80,7 +80,7 @@ export const MainView = () => {
                         className="my-3"
                         key={activity._id}
                       >
-                        <ActivitiesCard activity={activity} />
+                        <ActivitiesCard activity={activity} user={user} setUser={setUser} />
                       </Col>
                     </>
                   );

@@ -1,19 +1,8 @@
 import Button from "react-bootstrap/Button";
-import { useParams } from "react-router";
 
-export const Todo = ((user, server, token, activities) => {
-    // const { id } = useParams();
-    // const activity = activities.find((activity) => activity._id === id);
-    let activity = "";
-    fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json"
-        }
-        }).then((response) => {
-        
-        })
+export const Todo = (({user, server, token, activities}) => {
+    let activity = activities.map((activity) => activity);
+    console.log(activity);
 
     return (
         <>

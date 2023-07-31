@@ -2,7 +2,6 @@ import { ProfileUpdate } from "./profile-update-view/profile-update-view";
 import { Todo } from "../todo-view/todo-view";
 
 export const ProfileView = ({ user, server, token, setUser, onLogout, activities }) => {
-  
   return (
     <>
       <ProfileUpdate
