@@ -75,8 +75,8 @@ export const MainView = () => {
                       <Col
                         xs={12}
                         s={8}
-                        md={4}
-                        lg={3}
+                        md={6}
+                        lg={4}
                         className="my-3"
                         key={activity._id}
                       >

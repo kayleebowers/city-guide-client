@@ -8,11 +8,11 @@ export const ActivitiesCard = ({ activity }) => {
     <>
       <Link to={`/activities/${activity._id}`}>
         <Button>
-          <Card style={{ width: "20rem" }}>
+          <Card className=" mw-80 mh-80">
             <Card.Img
               variant="top"
               src={activity.ImagePath}
-              className="w-40 img-fluid"
+              className="h-100 img-fluid"
             />
             <Card.Body>
               <Card.Title>{activity.Name}</Card.Title>
