@@ -61,12 +61,13 @@ console.log(todo);
               <Card.Text>{activity.Description}</Card.Text>
               { user && (
                 <>
-                  { user.Todos.includes(activity._id) && (
-                     <Button onClick={addToTodo}>Add to Todo List</Button>
-                  )}
-                  { !user.Todos.includes(activity._id) && (
-                     <Button onClick={deleteTodo}>Delete from Todo List</Button>
-                  )}
+                  { user.Todos.includes(activity._id) ? (
+                    <Button onClick={deleteTodo}>Delete from Todo List</Button>
+                  ) :
+                  ( !user.Todos.includes(activity._id) && (
+                    <Button onClick={addToTodo}>Add to Todo List</Button>
+                  ))
+                  }
                 </>
               )}
             </Card.Body>
