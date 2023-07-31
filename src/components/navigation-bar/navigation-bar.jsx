@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({onLogout, user}) => {
   return (
-    <Navbar expand="md" className="bg-body-tertiary">
+    <Navbar expand="md" className="bg-body-tertiary h-30">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Pegasus City Guide
@@ -36,9 +36,7 @@ export const NavigationBar = ({onLogout, user}) => {
               <NavDropdown.Item as={Link} to={`/activities/types/Date%20Night`}>Date night</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-        </Navbar.Collapse>
-        {/* user routes */}
-        <Nav>
+          <Nav>
           { user && (
             <Nav.Link as={Link} to="/" onClick={onLogout}>Logout</Nav.Link>
           )}
@@ -49,6 +47,8 @@ export const NavigationBar = ({onLogout, user}) => {
             </>
           )}
         </Nav>
+        </Navbar.Collapse>
+        {/* user routes */}
       </Container>
     </Navbar>
   );
