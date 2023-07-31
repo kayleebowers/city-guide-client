@@ -7,6 +7,7 @@ export const ProfileUpdate = ({user, server, token}) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState(user.Email);
 
+    //update user info in API
     const handleUpdate = (e) => {
         e.preventDefault();
 
@@ -20,7 +21,7 @@ export const ProfileUpdate = ({user, server, token}) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/JSON",
-                Authorization: `Bearer: ${token}`
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
@@ -30,6 +31,7 @@ export const ProfileUpdate = ({user, server, token}) => {
                     return response.json();
                 } else {
                     alert("Update failed");
+                    console.error(error);
                 }
             }).then((data) => {
                 localStorage.setItem("user", JSON.stringify(data));
@@ -38,6 +40,25 @@ export const ProfileUpdate = ({user, server, token}) => {
                 console.error("Profile did not update");
             })
     }
+
+    //delete user from api
+    const handleDelete = () => {
+        fetch(`${server}/users/${user._id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            if (response.ok) {
+                alert(`User ${user.Username} was deleted`);
+            } else {
+                alert("Account deletion failed");
+            }
+        }).catch((error) => {
+            console.error(error);
+        })
+    }
+    
     return (
         <Form onSubmit={handleUpdate}>
         <Form.Group className="mb-3" controlId="formUsername">
@@ -54,6 +75,9 @@ export const ProfileUpdate = ({user, server, token}) => {
           <Form.Control type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
         </Form.Group>
         <Button variant="primary" type="submit">
+          Update your information
+        </Button>
+        <Button variant="primary" type="submit" onClick={handleDelete}>
           Update your information
         </Button>
       </Form> 
