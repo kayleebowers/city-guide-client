@@ -47,30 +47,9 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
       });
   };
 
-  //delete user from api
-  const handleDelete = () => {
-    fetch(`${server}/users/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert(`User ${user.Username} was deleted`);
-          onLogout(`${user._id}`);
-        } else {
-          alert("Account deletion failed");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   return (
     <>
-      <Form>
+      <Form onSubmit={handleUpdate}>
         <Form.Group className="mb-3" controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -100,7 +79,7 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleUpdate}>
+        <Button variant="primary" type="submit">
           Update your information
         </Button>
       </Form>
