@@ -12,7 +12,7 @@ export const ProfileView = ({ user, server, token, setUser, onLogout }) => {
         setUser={setUser}
         onLogout={onLogout}
       />
-      <Todo user={user} server={server} token={token}/>
+      <Todo user={user} server={server} token={token} activities={activities}/>
     </>
   );
 };

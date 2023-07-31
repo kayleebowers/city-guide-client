@@ -135,7 +135,7 @@ export const MainView = () => {
                 { !user ? (
                   <Navigate to="/login" />
                 ) : (
-                  <ProfileView user={user} server={server} token={token} setUser={setUser} onLogout={onLogout}/>
+                  <ProfileView user={user} server={server} token={token} setUser={setUser} onLogout={onLogout} activities={activities}/>
                 )}
               </>
             }
