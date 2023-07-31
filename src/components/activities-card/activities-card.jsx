@@ -4,9 +4,10 @@ import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export const ActivitiesCard = ({ activity, user, setUser }) => {
+export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
-  const [todo, setTodo] = useState(user.Todos.includes(activity._id));
+  console.log(user);
+  const [todo, setTodo] = useState("user.Todos.includes(activity._id");
 
   // add activity to todo list
   const addToTodo = () => {
@@ -59,6 +60,9 @@ export const ActivitiesCard = ({ activity, user, setUser }) => {
             <Card.Body>
               <Card.Title>{activity.Name}</Card.Title>
               <Card.Text>{activity.Description}</Card.Text>
+              { user && (
+                <Button onClick={addToTodo}>Add to Todo List</Button>
+              )}
             </Card.Body>
           </Card>
         </Button>
