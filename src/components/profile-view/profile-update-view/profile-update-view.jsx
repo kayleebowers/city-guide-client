@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 
-export const ProfileUpdate = ({user, server}) => {
+export const ProfileUpdate = ({user, server, token}) => {
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState(user.Email);
@@ -15,22 +15,23 @@ export const ProfileUpdate = ({user, server}) => {
             Password: password,
             Email: email
         };
-
+        
         fetch(`${server}/users/${user._id}`, {
-            method: "POST",
-            body: JSON.stringify(data),
+            method: "PUT",
             headers: {
                 "Content-Type": "application/JSON",
                 Authorization: `Bearer: ${token}`
-            }
+            },
+            body: JSON.stringify(data)
         })
             .then((response) => {
                 if (response.ok) {
                     alert("Your profile was updated");
-                    response.json();
+                    return response.json();
+                } else {
+                    alert("Update failed");
                 }
             }).then((data) => {
-                console.log(data);
                 localStorage.setItem("user", JSON.stringify(data));
                 setUsername(user);
             }).catch((error) => {
