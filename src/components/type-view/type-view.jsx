@@ -7,16 +7,14 @@ export const TypeView = ({ activities }) => {
   const { type } = useParams();
   const events = activities.filter((activity) => activity.Type === type);
   return (
-    <Col >
-      <Carousel style={{border: "1px solid red"}} className="w-50">
+    <Col style={{border: "1px solid red"}} >
+      <Carousel style={{border: "1px solid red"}} className="w-100">
         {events.map((slide) => {
           return (
             <Carousel.Item key={slide._id}>
             <Link to={`/activities/${slide._id}`}>
-
-                
               <img
-                className="w-100"
+                className="mh-10"
                 src={slide.ImagePath}
                 alt="slider image"
               />
