@@ -1,11 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
+import { useNavigate } from 'react-router';
+import { useHistory } from 'react-router'
 
-export const ProfileUpdate = ({user, server, token}) => {
+export const ProfileUpdate = ({user, server, token, setUser}) => {
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState(user.Email);
+    
+    const navigate = useNavigate();
 
     //update user info in API
     const handleUpdate = (e) => {
@@ -35,7 +39,9 @@ export const ProfileUpdate = ({user, server, token}) => {
                 }
             }).then((data) => {
                 localStorage.setItem("user", JSON.stringify(data));
-                setUsername(user);
+                setUser(user);
+                navigate(0);
+                navigate(`/users/${user._id}`);
             }).catch((error) => {
                 console.error("Profile did not update");
             })
@@ -58,7 +64,7 @@ export const ProfileUpdate = ({user, server, token}) => {
             console.error(error);
         })
     }
-    
+
     return (
         <Form onSubmit={handleUpdate}>
         <Form.Group className="mb-3" controlId="formUsername">
@@ -78,7 +84,7 @@ export const ProfileUpdate = ({user, server, token}) => {
           Update your information
         </Button>
         <Button variant="primary" type="submit" onClick={handleDelete}>
-          Update your information
+          Delete your account
         </Button>
       </Form> 
     )
