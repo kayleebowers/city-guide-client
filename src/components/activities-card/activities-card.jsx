@@ -6,9 +6,8 @@ import { useState } from "react";
 
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
-  console.log(user);
-  const [todo, setTodo] = useState("user.Todos.includes(activity._id");
-
+  const [todo, setTodo] = useState(user ? user.Todos.includes(activity._id) : null);
+console.log(todo);
   // add activity to todo list
   const addToTodo = () => {
     fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
@@ -47,7 +46,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
         })
       }
 
-  return (
+    return (
     <>
       <Link to={`/activities/${activity._id}`}>
         <Button>
@@ -61,7 +60,14 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
               <Card.Title>{activity.Name}</Card.Title>
               <Card.Text>{activity.Description}</Card.Text>
               { user && (
-                <Button onClick={addToTodo}>Add to Todo List</Button>
+                <>
+                  { user.Todos.includes(activity._id) && (
+                     <Button onClick={addToTodo}>Add to Todo List</Button>
+                  )}
+                  { !user.Todos.includes(activity._id) && (
+                     <Button onClick={deleteTodo}>Delete from Todo List</Button>
+                  )}
+                </>
               )}
             </Card.Body>
           </Card>
