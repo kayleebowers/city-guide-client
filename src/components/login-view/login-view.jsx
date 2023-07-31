@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 export const LoginView = ({ onLogin, server, user }) => {
   const [username, setUsername] = useState("");
@@ -51,7 +51,6 @@ export const LoginView = ({ onLogin, server, user }) => {
       md={8}
       sm={10}
       className="mx-auto p-5 d-flex flex-column"
-      style={{ border: "1px solid red" }}
     >
       <div className="text-center">
         <h1 className="mx-auto mb-4">Login</h1>

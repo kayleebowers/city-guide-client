@@ -49,7 +49,6 @@ export const SignUpView = ({ server }) => {
       md={8}
       sm={10}
       className="mx-auto p-5"
-      style={{ border: "1px solid red" }}
     >
       <div className="text-center">
         <h1 className="mx-auto mb-4">Sign up to track your activities</h1>

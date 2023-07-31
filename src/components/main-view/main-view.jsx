@@ -64,11 +64,11 @@ export const MainView = () => {
             path="/"
             element={
               <>
-                <div className="d-flex flex-column align-items-center justify-content-center" style={{border: "1px solid red"}}>
-                  <h1>Welcome to Dallas</h1>
-                  <p className="mx-auto">Dallas, Texas, is the fourth-largest metropolitan area in the U.S. at 7.5 million people. With a 2020 census population of 1,304,379, it is the ninth-most populous city in the U.S. and the third-most populous city in Texas after Houston and San Antonio. Little wonder there is something here for everyone!</p>
-                </div>
-                <h2>Activities</h2>
+                <Col className="p-5" style={{border: "1px solid #dd0000"}}>
+                  <h1 className="pb-2 text-center">Welcome to Dallas</h1>
+                  <p className="text-center">Dallas, Texas, is the fourth-largest metropolitan area in the U.S. at 7.5 million people. With a 2020 census population of 1,304,379, it is the ninth-most populous city in the U.S. and the third-most populous city in Texas after Houston and San Antonio. Little wonder there is something here for everyone!</p>
+                </Col>
+                <h2>What to do...</h2>
                 {activities.map((activity) => {
                   return (
                     <>
