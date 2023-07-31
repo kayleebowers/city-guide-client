@@ -132,7 +132,7 @@ export const MainView = () => {
             path="/users/:id"
             element={
               <>
-                <ProfileView user={user} server={server} token={token} setUser={setUser}/>
+                <ProfileView user={user} server={server} token={token} setUser={setUser} onLogout={onLogout}/>
               </>
             }
           />
