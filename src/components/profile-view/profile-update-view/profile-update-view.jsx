@@ -1,12 +1,19 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
+  //state to manage updates
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
+
+  //add states to operate modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
 
@@ -47,6 +54,27 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
       });
   };
 
+  //delete user from api
+  const handleDelete = () => {
+    fetch(`${server}/users/${user._id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert(`User ${user.Username} was deleted`);
+          onLogout();
+        } else {
+          alert("Account deletion failed");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <>
       <Form onSubmit={handleUpdate}>
@@ -82,7 +110,27 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
         <Button variant="primary" type="submit">
           Update your information
         </Button>
-      </Form>
+        {/* modal button */}
+        <Button variant="primary" onClick={handleShow}>
+          Delete your account
+        </Button>
+        {/* open delete modal */}
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Are you sure you want to delete your account?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Back
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </Form>      
     </>
   );
 };
