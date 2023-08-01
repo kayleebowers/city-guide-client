@@ -1,6 +1,7 @@
 import { ProfileUpdate } from "./profile-update-view/profile-update-view";
 import { Todo } from "../todo-view/todo-view";
 import { useEffect } from "react";
+import { Col } from "react-bootstrap";
 
 export const ProfileView = ({ user, server, token, setUser, onLogout, activities }) => {
   useEffect(() => {
@@ -22,14 +23,18 @@ export const ProfileView = ({ user, server, token, setUser, onLogout, activities
 
   return (
     <>
-      <ProfileUpdate
-        user={user}
-        server={server}
-        token={token}
-        setUser={setUser}
-        onLogout={onLogout}
-      />
-      <Todo user={user} server={server} token={token} activities={activities}/>
+      <Col>
+        <ProfileUpdate
+          user={user}
+          server={server}
+          token={token}
+          setUser={setUser}
+          onLogout={onLogout}
+        />
+      </Col>
+      <Col>
+        <Todo user={user} server={server} token={token} activities={activities}/>
+      </Col>
     </>
   );
 };

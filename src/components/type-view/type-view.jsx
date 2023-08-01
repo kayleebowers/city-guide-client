@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
 export const TypeView = ({ activities }) => {
@@ -17,10 +17,10 @@ export const TypeView = ({ activities }) => {
                 className="mh-10"
                 src={slide.ImagePath}
                 alt="slider image"
+                style={{ height: "60vh", width: "100%", objectFit: "cover"}}
               />
               <Carousel.Caption>
                 <h3>{slide.Name}</h3>
-                <p>{slide.Description}</p>
               </Carousel.Caption>
               </Link>
 

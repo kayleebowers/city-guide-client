@@ -77,6 +77,7 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
 
   return (
     <>
+      <h3>Update your information</h3>
       <Form onSubmit={handleUpdate}>
         <Form.Group className="mb-3" controlId="formUsername">
           <Form.Label>Username</Form.Label>

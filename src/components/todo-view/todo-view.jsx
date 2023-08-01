@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { ActivitiesCard } from "../activities-card/activities-card";
 import { Carousel } from "react-bootstrap";
 
 export const Todo = ({ user, server, token, activities }) => {
@@ -34,8 +33,9 @@ export const Todo = ({ user, server, token, activities }) => {
 
   return (
     <>
+      <Col>
       <h3>Todo List</h3>
-      <Carousel style={{border: "1px solid red"}} className="w-50">
+      <Carousel className="w-50">
           {listItems.map((todo) => {
             return (
               <Carousel.Item key={todo._id}>
@@ -52,8 +52,10 @@ export const Todo = ({ user, server, token, activities }) => {
             );
           })}
       </Carousel>
+      </Col>
+      <Col>
       <h3>Memories You've Made</h3>
-      <Carousel style={{border: "1px solid red"}} className="w-50">
+      <Carousel className="w-50">
           {memories.map((completed) => {
             return (
               <Carousel.Item key={completed._id}>
@@ -70,6 +72,7 @@ export const Todo = ({ user, server, token, activities }) => {
             );
           })}
       </Carousel>
+      </Col>
     </>
   );
 };
