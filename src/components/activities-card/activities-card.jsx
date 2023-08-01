@@ -8,6 +8,7 @@ import { Todo } from "../todo-view/todo-view";
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
   const [todo, setTodo] = useState(user ? user.Todos.includes(activity._id) : null);
+  const [clicked, setClicked] = useState(false);
 
   // track completed items
   const [completed, setCompleted] = useState(user ? user.Completed.includes(activity._id) : null);
@@ -57,16 +58,14 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
     fetch(`${server}/users/${user._id}/completed/${activity._id}`, {
       method: "POST",
       headers: {
-        Authentication: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
       }
-    }).then((response) => {
-      console.log(response);
-      return response.json();
-    }).then((data) => {
-      setCompleted(true);
+    }).then((response) => response.json())
+    .then((data) => {
       localStorage.setItem("user", JSON.stringify(data));
       setUser(user);
+      setCompleted(true);
       alert("Completed successful");
     }).catch((error) => {
       console.error(error);
@@ -78,13 +77,13 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
     fetch(`${server}/users/${user._id}/completed/${activity._id}`, {
       method: "DELETE",
       headers: {
-        Authentication: `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     }).then((response) => response.json())
     .then((data) => {
-      setCompleted(false);
-      setUser(user);
       localStorage.setItem("user", JSON.stringify(data));
+      setUser(user);
+      setCompleted(false);
       alert("Deleted completed item");
     }).catch((error) => {
       console.error(error);
@@ -94,6 +93,23 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   return (
     <>
       <Card className=" mw-80 mh-80">
+        { user && (
+          <>
+            { completed ? (
+              <input type="checkbox" onChange={() => {
+                addCompleted();
+                setClicked(true);
+              }}
+              />
+            ) : (
+              <input type="checkbox" onChange={() => {
+                deleteCompleted();
+                setClicked(false);
+              }}
+              />
+            )}
+          </>
+        )}  
         <Card.Img
           variant="top"
           src={activity.ImagePath}
