@@ -67,10 +67,29 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       setCompleted(true);
       localStorage.setItem("user", JSON.stringify(data));
       setUser(user);
+      alert("Completed successful");
     }).catch((error) => {
       console.error(error);
     });
   };
+
+  //remove completed item
+  const deleteCompleted = () => {
+    fetch(`${server}/users/${user._id}/completed/${activity._id}`, {
+      method: "DELETE",
+      headers: {
+        Authentication: `Bearer ${token}`
+      }
+    }).then((response) => response.json())
+    .then((data) => {
+      setCompleted(false);
+      setUser(user);
+      localStorage.setItem("user", JSON.stringify(data));
+      alert("Deleted completed item");
+    }).catch((error) => {
+      console.error(error);
+    })
+  }
 
   return (
     <>
