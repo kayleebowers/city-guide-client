@@ -7,7 +7,7 @@ import { useState } from "react";
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
   const [todo, setTodo] = useState(user ? user.Todos.includes(activity._id) : null);
-console.log(todo);
+
   // add activity to todo list
   const addToTodo = () => {
     fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
@@ -48,8 +48,7 @@ console.log(todo);
 
     return (
     <>
-      <Link to={`/activities/${activity._id}`}>
-        <Button>
+      
           <Card className=" mw-80 mh-80">
             <Card.Img
               variant="top"
@@ -58,7 +57,9 @@ console.log(todo);
             />
             <Card.Body>
               <Card.Title>{activity.Name}</Card.Title>
-              <Card.Text>{activity.Description}</Card.Text>
+              <Link to={`/activities/${activity._id}`}>
+                <Button>Learn more</Button>
+              </Link>
               { user && (
                 <>
                   { user.Todos.includes(activity._id) ? (
@@ -72,8 +73,6 @@ console.log(todo);
               )}
             </Card.Body>
           </Card>
-        </Button>
-      </Link>
     </>
   );
 };
