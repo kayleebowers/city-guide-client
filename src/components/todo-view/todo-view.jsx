@@ -33,12 +33,12 @@ export const Todo = ({ user, server, token, activities }) => {
 
   return (
     <>
-      <Col>
+      <div className="d-flex flex-column align-items-center m-3" style={{border: "1px solid black"}}>
       <h3>Todo List</h3>
-      <Carousel className="w-50">
+      <Carousel className="w-100">
           {listItems.map((todo) => {
             return (
-              <Carousel.Item key={todo._id}>
+              <Carousel.Item key={todo._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
                 <Carousel.Caption>
                   <h3>{todo.Name}</h3>
                 </Carousel.Caption>
@@ -52,13 +52,13 @@ export const Todo = ({ user, server, token, activities }) => {
             );
           })}
       </Carousel>
-      </Col>
-      <Col>
+      </div>
+      <div style={{border: "1px solid black"}} className="d-flex flex-column align-items-center m-3">
       <h3>Memories You've Made</h3>
-      <Carousel className="w-50">
+      <Carousel>
           {memories.map((completed) => {
             return (
-              <Carousel.Item key={completed._id}>
+              <Carousel.Item key={completed._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
                 <Carousel.Caption>
                   <h3>{completed.Name}</h3>
                 </Carousel.Caption>
@@ -72,7 +72,7 @@ export const Todo = ({ user, server, token, activities }) => {
             );
           })}
       </Carousel>
-      </Col>
+      </div>
     </>
   );
 };

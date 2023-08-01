@@ -1,7 +1,7 @@
 import { ProfileUpdate } from "./profile-update-view/profile-update-view";
 import { Todo } from "../todo-view/todo-view";
 import { useEffect } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 export const ProfileView = ({ user, server, token, setUser, onLogout, activities }) => {
   useEffect(() => {
@@ -22,8 +22,10 @@ export const ProfileView = ({ user, server, token, setUser, onLogout, activities
   }, [user]);
 
   return (
-    <>
-      <Col>
+    <Row className="d-flex flex-column align-items-center p-5" style={{border: "1px solid black"}}>
+      <Col lg={6}
+      md={8}
+      sm={10}>
         <ProfileUpdate
           user={user}
           server={server}
@@ -32,9 +34,9 @@ export const ProfileView = ({ user, server, token, setUser, onLogout, activities
           onLogout={onLogout}
         />
       </Col>
-      <Col>
+      <Col className="d-flex" style={{border: "1px solid black"}}>
         <Todo user={user} server={server} token={token} activities={activities}/>
       </Col>
-    </>
+    </Row>
   );
 };
