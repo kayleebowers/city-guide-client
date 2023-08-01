@@ -10,11 +10,6 @@ export const Todo = ({ user, server, token, activities }) => {
     //get list of completed items
     let completedItems = user.Completed;
     console.log(completedItems);
-
-    //add items to completed list
-    const addCompleted = () => {
-        fetch(`${server}/users/${user._id}/completed/:activitiesId`)
-    }
     
   return (
     <>
