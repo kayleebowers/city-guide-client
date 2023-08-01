@@ -34,7 +34,7 @@ export const ProfileView = ({ user, server, token, setUser, onLogout, activities
           onLogout={onLogout}
         />
       </Col>
-      <Col className="d-flex" style={{border: "1px solid black"}}>
+      <Col className="d-flex justify-content-evenly">
         <Todo user={user} server={server} token={token} activities={activities}/>
       </Col>
     </Row>

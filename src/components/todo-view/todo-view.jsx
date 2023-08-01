@@ -35,7 +35,7 @@ export const Todo = ({ user, server, token, activities }) => {
     <>
       <div className="d-flex flex-column align-items-center m-3" style={{border: "1px solid black"}}>
       <h3>Todo List</h3>
-      <Carousel className="w-100">
+      <Carousel className="w-100" slide={false}>
           {listItems.map((todo) => {
             return (
               <Carousel.Item key={todo._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
@@ -51,11 +51,11 @@ export const Todo = ({ user, server, token, activities }) => {
               </Carousel.Item>
             );
           })}
-      </Carousel>
+      </Carousel >
       </div>
       <div style={{border: "1px solid black"}} className="d-flex flex-column align-items-center m-3">
       <h3>Memories You've Made</h3>
-      <Carousel>
+      <Carousel slide={false}>
           {memories.map((completed) => {
             return (
               <Carousel.Item key={completed._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
