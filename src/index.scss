@@ -1,6 +1,10 @@
 //customization here
 $primary: #dd0000;
 
+input[type=checkbox]{
+    accent-color:  #dd0000; 
+    }
+
 * {
     font-family: 'Lilita One', cursive;
 }
