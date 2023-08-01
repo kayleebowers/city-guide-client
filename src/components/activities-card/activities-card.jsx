@@ -117,7 +117,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
           }}
         />
         {user && (
-          <Card.Body>
+          <Card.Body className="d-flex align-items-center justify-content-center">
             <>
               {user && (
                 <>
@@ -127,8 +127,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                         deleteTodo();
                         setClicked(false);
                       }}
+                      className="py-2 mx-3"
                     >
-                      Delete from Todo List
+                      Delete From Todo List
                     </Button>
                   ) : (
                     <Button
@@ -136,8 +137,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                         addToTodo();
                         setClicked(true);
                       }}
+                      className="py-2 mx-3"
                     >
-                      Add to Todo List
+                      Add To Todo List
                     </Button>
                   )}
                 </>
@@ -146,22 +148,23 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                 <>
                   {!completed ? (
                     <Button
+                      className="py-2 mx-3"
                       onClick={() => {
                         addCompleted();
                         setClicked(true);
                       }}
                     >
-                      Already done?
+                      Add To Memories
                     </Button>
                   ) : (
                     <Button
+                      className="py-2 mx-3"
                       onClick={() => {
                         deleteCompleted();
                         setClicked(false);
                       }}
                     >
-                      {" "}
-                      Remove from completed
+                      Remove From Memories
                     </Button>
                   )}
                 </>
