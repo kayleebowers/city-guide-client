@@ -2,11 +2,20 @@ import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 
 export const Todo = ({ user, server, token, activities }) => {
-    //get array of activities that matches user.Todos
+//get array of activities that matches user.Todos
   let listItems = activities.filter((activity) =>
     user.Todos.includes(activity._id)
   );
 
+    //get list of completed items
+    let completedItems = user.Completed;
+    console.log(completedItems);
+
+    //add items to completed list
+    const addCompleted = () => {
+        fetch(`${server}/users/${user._id}/completed/:activitiesId`)
+    }
+    
   return (
     <>
       <h3>Todo List</h3>
@@ -22,6 +31,7 @@ export const Todo = ({ user, server, token, activities }) => {
           );
         })}
       </ul>
+      <h3>Memories You've Made</h3>
     </>
   );
 };
