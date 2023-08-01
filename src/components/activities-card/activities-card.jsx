@@ -90,7 +90,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
 
   return (
     <>
-      <Card className=" mw-80 mh-80">
+      <Card className="h-100" style={{minHeight: "100%"}}>
         { user && (
           <>
             { !completed ? (
@@ -110,7 +110,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
         <Card.Img
           variant="top"
           src={activity.ImagePath}
-          className="h-100 img-fluid"
+          style={{ height: "100%", width: "100%", objectFit: "cover"}}
         />
         <Card.Body>
           <Card.Title>{activity.Name}</Card.Title>

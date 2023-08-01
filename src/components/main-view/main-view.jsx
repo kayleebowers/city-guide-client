@@ -77,7 +77,7 @@ export const MainView = () => {
                         s={8}
                         md={6}
                         lg={4}
-                        className="my-3"
+                        className="my-3 border border-primary"
                         key={activity._id}
                       >
                         <ActivitiesCard activity={activity} user={user} setUser={setUser} server={server} token={token} />
