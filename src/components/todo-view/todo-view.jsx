@@ -8,8 +8,10 @@ export const Todo = ({ user, server, token, activities }) => {
   );
 
     //get list of completed items
-    let completedItems = user.Completed;
-    console.log(completedItems);
+    const completedItems = user.Completed;
+    const memories = activities.filter((completed) =>
+    completedItems.includes(completed._id)
+    );
     
   return (
     <>
@@ -27,6 +29,18 @@ export const Todo = ({ user, server, token, activities }) => {
         })}
       </ul>
       <h3>Memories You've Made</h3>
+      <ul>
+        {memories.map((completed) => {
+          return (
+            <>
+                <Col className="d-flex">
+                    <li key={completed._id}>{completed.Name}</li>
+                    <input type="checkbox"></input>
+                </Col>
+            </>
+          );
+        })}
+      </ul>
     </>
   );
 };
