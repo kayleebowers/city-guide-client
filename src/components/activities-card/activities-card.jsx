@@ -3,11 +3,13 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Todo } from "../todo-view/todo-view";
 
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
   const [todo, setTodo] = useState(user ? user.Todos.includes(activity._id) : null);
-
+  const [isClicked, setClicked] = useState(false);
+  
   // add activity to todo list
   const addToTodo = () => {
     fetch(`${server}/users/${user._id}/activities/${activity._id}`, {
@@ -18,10 +20,10 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       }
       }).then((response) => response.json())
         .then((data) => {
-          alert("The activity was added to your todo list");
           localStorage.setItem("user", JSON.stringify(data));
           setUser(user);
           setTodo(true);
+          alert("The activity was added to your todo list");
         }).catch((error) => {
           console.error(error);
         })
@@ -39,7 +41,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
         .then((data) => {
           localStorage.setItem("user", JSON.stringify(data));
           setUser(user);
-          setTodo(false);
+          setTodo(!todo);
           alert("The activity was deleted from your todo list");
         }).catch((error) => {
           console.error(error);
@@ -62,12 +64,18 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
               </Link>
               { user && (
                 <>
-                  { user.Todos.includes(activity._id) ? (
-                    <Button onClick={deleteTodo}>Delete from Todo List</Button>
-                  ) :
-                  ( !user.Todos.includes(activity._id) && (
-                    <Button onClick={addToTodo}>Add to Todo List</Button>
-                  ))
+                  { todo ? (
+                    <Button onClick={() => {
+                      deleteTodo();
+                      setClicked(false);
+                    }}>
+                      Delete from Todo List</Button>
+                  ) : (
+                    <Button onClick={() => {
+                      addToTodo();
+                      setClicked(true);
+                    }}>Add to Todo List</Button>
+                  )
                   }
                 </>
               )}
