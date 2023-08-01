@@ -1,17 +1,32 @@
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
 
 export const Todo = ({ user, server, token, activities }) => {
+  const [completed, setCompleted] = useState([]);
+
 //get array of activities that matches user.Todos
   let listItems = activities.filter((activity) =>
     user.Todos.includes(activity._id)
   );
 
-    //get list of completed items
-    const completedItems = user.Completed;
-    const memories = activities.filter((completed) =>
-    completedItems.includes(completed._id)
-    );
+    useEffect(() => {
+      fetch(`${server}/users/${user._id}/completed`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) => response.json())
+      .then((completed) => {
+        setCompleted(completed.Completed);
+      }).catch((error) => {
+        console.error(error);
+      })
+    }, [])
+
+     //get list of completed items
+     const memories = activities.filter((activity) =>
+     completed.includes(activity._id)
+     );
     
   return (
     <>
