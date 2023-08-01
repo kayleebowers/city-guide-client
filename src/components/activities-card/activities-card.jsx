@@ -7,11 +7,15 @@ import { Todo } from "../todo-view/todo-view";
 
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
-  const [todo, setTodo] = useState(user ? user.Todos.includes(activity._id) : null);
+  const [todo, setTodo] = useState(
+    user ? user.Todos.includes(activity._id) : null
+  );
   const [clicked, setClicked] = useState(false);
 
   // track completed items
-  const [completed, setCompleted] = useState(user ? user.Completed.includes(activity._id) : null);
+  const [completed, setCompleted] = useState(
+    user ? user.Completed.includes(activity._id) : null
+  );
 
   // add activity to todo list
   const addToTodo = () => {
@@ -59,16 +63,18 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
-    }).then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem("user", JSON.stringify(data));
-      setUser(user);
-      setCompleted(true);
-    }).catch((error) => {
-      console.error(error);
-    });
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(user);
+        setCompleted(true);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   //remove completed item
@@ -76,47 +82,34 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
     fetch(`${server}/users/${user._id}/completed/${activity._id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem("user", JSON.stringify(data));
-      setUser(user);
-      setCompleted(false);
-    }).catch((error) => {
-      console.error(error);
+        Authorization: `Bearer ${token}`,
+      },
     })
-  }
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(user);
+        setCompleted(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
-      <Card className="h-100" style={{minHeight: "100%"}}>
-        { user && (
-          <>
-            { !completed ? (
-              <Button onClick={() => {
-                addCompleted();
-                setClicked(true);
-              }}>Already done?</Button>
-            ) : (
-              <Button onClick={() => {
-                deleteCompleted();
-                setClicked(false);
-              }}
-              > Remove from completed</Button>
-            )}
-          </>
-        )}  
+      <Card style={{ height: "100%" }}>
+        <Link to={`/activities/${activity._id}`}>
+          <Button>
+            <Card.Title>{activity.Name}</Card.Title>
+          </Button>
+        </Link>
         <Card.Img
           variant="top"
           src={activity.ImagePath}
-          style={{ height: "100%", width: "100%", objectFit: "cover"}}
+          style={{ height: "100%", width: "100%", objectFit: "cover" }}
         />
         <Card.Body>
-          <Card.Title>{activity.Name}</Card.Title>
-          <Link to={`/activities/${activity._id}`}>
-            <Button>Learn more</Button>
-          </Link>
           {user && (
             <>
               {todo ? (
@@ -136,6 +129,30 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                   }}
                 >
                   Add to Todo List
+                </Button>
+              )}
+            </>
+          )}
+          {user && (
+            <>
+              {!completed ? (
+                <Button
+                  onClick={() => {
+                    addCompleted();
+                    setClicked(true);
+                  }}
+                >
+                  Already done?
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    deleteCompleted();
+                    setClicked(false);
+                  }}
+                >
+                  {" "}
+                  Remove from completed
                 </Button>
               )}
             </>
