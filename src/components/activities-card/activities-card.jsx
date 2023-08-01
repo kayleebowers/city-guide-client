@@ -66,7 +66,6 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       localStorage.setItem("user", JSON.stringify(data));
       setUser(user);
       setCompleted(true);
-      alert("Completed successful");
     }).catch((error) => {
       console.error(error);
     });
@@ -84,7 +83,6 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       localStorage.setItem("user", JSON.stringify(data));
       setUser(user);
       setCompleted(false);
-      alert("Deleted completed item");
     }).catch((error) => {
       console.error(error);
     })
@@ -95,18 +93,17 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       <Card className=" mw-80 mh-80">
         { user && (
           <>
-            { completed ? (
-              <input type="checkbox" onChange={() => {
+            { !completed ? (
+              <Button onClick={() => {
                 addCompleted();
                 setClicked(true);
-              }}
-              />
+              }}>Add to completed</Button>
             ) : (
-              <input type="checkbox" onChange={() => {
+              <Button onClick={() => {
                 deleteCompleted();
                 setClicked(false);
               }}
-              />
+              > Remove from completed</Button>
             )}
           </>
         )}  
