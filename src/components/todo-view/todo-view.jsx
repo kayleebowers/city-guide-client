@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const Todo = ({ user, server, token, activities }) => {
   const [completed, setCompleted] = useState([]);
@@ -33,14 +34,15 @@ export const Todo = ({ user, server, token, activities }) => {
 
   return (
     <>
-      <div className="d-flex flex-column align-items-center m-3" style={{border: "1px solid black"}}>
-      <h3>Todo List</h3>
+      <div className="d-flex flex-column align-items-center m-3 border border-primary">
+      <h3 className="m-4">Todo List</h3>
       <Carousel className="w-100" slide={false}>
           {listItems.map((todo) => {
             return (
               <Carousel.Item key={todo._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
+                <Link to={`/activities/${todo._id}`}>
                 <Carousel.Caption>
-                  <h3>{todo.Name}</h3>
+                  <h3 className="bg-primary">{todo.Name}</h3>
                 </Carousel.Caption>
                 <img
                   style={{ height: "60vh", width: "100%", objectFit: "cover"}}
@@ -48,19 +50,21 @@ export const Todo = ({ user, server, token, activities }) => {
                   src={todo.ImagePath}
                   alt="slider image"
                 />
+                </Link>
               </Carousel.Item>
             );
           })}
       </Carousel >
       </div>
-      <div style={{border: "1px solid black"}} className="d-flex flex-column align-items-center m-3">
-      <h3>Memories You've Made</h3>
+      <div className="d-flex flex-column align-items-center m-3 border border-primary">
+      <h3 className="m-4">Memories You've Made</h3>
       <Carousel slide={false}>
           {memories.map((completed) => {
             return (
               <Carousel.Item key={completed._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
+                <Link to={`/activities/${completed._id}`}>
                 <Carousel.Caption>
-                  <h3>{completed.Name}</h3>
+                  <h3 className="bg-primary">{completed.Name}</h3>
                 </Carousel.Caption>
                 <img
                   style={{ height: "60vh", width: "100%", objectFit: "cover"}}
@@ -68,6 +72,7 @@ export const Todo = ({ user, server, token, activities }) => {
                   src={completed.ImagePath}
                   alt="slider image"
                 />
+               </Link>
               </Carousel.Item>
             );
           })}

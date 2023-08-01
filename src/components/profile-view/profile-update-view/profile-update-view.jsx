@@ -77,8 +77,8 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
 
   return (
     <>
-      <h3>Update your information</h3>
-      <Form onSubmit={handleUpdate}>
+      <h3 className="m-4 text-center">Update your information</h3>
+      <Form onSubmit={handleUpdate} className="mb-4">
         <Form.Group className="mb-3" controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -108,13 +108,15 @@ export const ProfileUpdate = ({ user, server, token, setUser, onLogout }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <div className="d-flex justify-content-center">
+        <Button variant="primary" type="submit" className="m-3">
           Update your information
         </Button>
         {/* modal button */}
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="primary" onClick={handleShow} className="m-3">
           Delete your account
         </Button>
+        </div>
         {/* open delete modal */}
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

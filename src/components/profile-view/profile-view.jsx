@@ -22,7 +22,7 @@ export const ProfileView = ({ user, server, token, setUser, onLogout, activities
   }, [user]);
 
   return (
-    <Row className="d-flex flex-column align-items-center p-5" style={{border: "1px solid black"}}>
+    <Row className="d-flex flex-column align-items-center p-5">
       <Col lg={6}
       md={8}
       sm={10}>
