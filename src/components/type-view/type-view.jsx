@@ -7,20 +7,21 @@ export const TypeView = ({ activities }) => {
   const { type } = useParams();
   const events = activities.filter((activity) => activity.Type === type);
   return (
-    <Col style={{border: "1px solid red"}} >
-      <Carousel style={{border: "1px solid red"}} className="w-100">
+    <Col lg={12} md={12} sm={10} className="border border-primary">
+      <h1 className="p-5 mt-2 text-center">{type}</h1>
+      <Carousel className="w-100" style={{height: "75vh"}}>
         {events.map((slide) => {
           return (
-            <Carousel.Item key={slide._id}>
+            <Carousel.Item key={slide._id} style={{height: "75vh"}}>
             <Link to={`/activities/${slide._id}`}>
               <img
                 className="mh-10"
                 src={slide.ImagePath}
                 alt="slider image"
-                style={{ height: "60vh", width: "100%", objectFit: "cover"}}
+                style={{ height: "75vh", width: "100%", objectFit: "cover"}}
               />
               <Carousel.Caption>
-                <h3>{slide.Name}</h3>
+                <h3 className="bg-primary">{slide.Name}</h3>
               </Carousel.Caption>
               </Link>
 
