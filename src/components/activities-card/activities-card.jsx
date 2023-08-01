@@ -97,7 +97,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
               <Button onClick={() => {
                 addCompleted();
                 setClicked(true);
-              }}>Add to completed</Button>
+              }}>Already done?</Button>
             ) : (
               <Button onClick={() => {
                 deleteCompleted();
