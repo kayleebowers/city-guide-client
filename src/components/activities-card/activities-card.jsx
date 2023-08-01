@@ -100,15 +100,19 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
     <>
       <Card style={{ height: "100%" }}>
         <Link to={`/activities/${activity._id}`}>
-          <Button>
-            <Card.Title>{activity.Name}</Card.Title>
+          <Button className="w-100 rounded-top" style={{borderRadius: "0"}}>
+            <Card.Title>
+              <h3>
+              {activity.Name}
+              </h3>
+            </Card.Title>
           </Button>
-        </Link>
         <Card.Img
           variant="top"
           src={activity.ImagePath}
-          style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          style={{ height: "100%", width: "100%", objectFit: "cover", borderRadius: "0" }}
         />
+        </Link>
         <Card.Body>
           {user && (
             <>
