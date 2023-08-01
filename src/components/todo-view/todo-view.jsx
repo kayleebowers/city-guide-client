@@ -1,6 +1,8 @@
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { ActivitiesCard } from "../activities-card/activities-card";
+import { Carousel } from "react-bootstrap";
 
 export const Todo = ({ user, server, token, activities }) => {
   const [completed, setCompleted] = useState([]);
@@ -24,9 +26,7 @@ export const Todo = ({ user, server, token, activities }) => {
   }, []);
 
   //get array of activities that matches user.Todos
-  let listItems = activities.filter((activity) =>
-    todo.includes(activity._id)
-  );
+  let listItems = activities.filter((activity) => todo.includes(activity._id));
   //get list of completed items
   const memories = activities.filter((activity) =>
     completed.includes(activity._id)
@@ -35,18 +35,25 @@ export const Todo = ({ user, server, token, activities }) => {
   return (
     <>
       <h3>Todo List</h3>
-      <ul>
-        {listItems.map((todo) => {
-          return (
-            <>
-              <Col className="d-flex">
-                <li key={todo._id}>{todo.Name}</li>
-                <input type="checkbox"></input>
-              </Col>
-            </>
-          );
-        })}
-      </ul>
+      {/* <Carousel style={{border: "1px solid red"}} className="w-100"> */}
+      <div
+        id="carouselExampleSlidesOnly"
+        className="carousel slide"
+        data-ride="carousel"
+      >
+        <div className="carousel-inner">
+          {listItems.map((todo) => {
+            return (
+              <>
+                <div className="carousel-item active">
+                  <ActivitiesCard activity={todo} />
+                </div>
+              </>
+            );
+          })}
+        </div>
+      </div>
+      {/* </Carousel> */}
       <h3>Memories You've Made</h3>
       <ul>
         {memories.map((completed) => {
