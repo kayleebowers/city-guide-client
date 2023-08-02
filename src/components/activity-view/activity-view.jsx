@@ -32,12 +32,14 @@ export const ActivityView = ({ activities }) => {
             <img src={Map} alt="map icon"/>
             <span className="mx-3">{activity.Address}</span> 
           </Card.Text>
-          <Link to={`/`}>
-            <Button variant="primary">More activities</Button>
-          </Link>
-          <a href={activity.Website} target="_blank">
-            <Button variant="primary">Visit website</Button>
-          </a>
+          <div className="d-flex justify-content-center m-2">
+            <Link to={`/`}>
+              <Button variant="primary" className="mx-2">More activities</Button>
+            </Link>
+            <a href={activity.Website} target="_blank">
+              <Button variant="primary">Visit website</Button>
+            </a>
+          </div>
         </Card.Body>
       </Card>
       <div>

@@ -64,6 +64,8 @@ export const MainView = () => {
     }
   };
 
+  shuffleArray(activities);
+
   return (
     <BrowserRouter>
       <NavigationBar onLogout={onLogout} user={user} />
