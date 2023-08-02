@@ -8,7 +8,7 @@ export const TypeView = ({ activities }) => {
   const events = activities.filter((activity) => activity.Type === type);
   return (
     <Col lg={12} md={12} sm={10} >
-      <h1 className="p-5 mt-2 text-center">{type}</h1>
+      <h1 className="pt-5 mt-2 text-center">{type}</h1>
       <Carousel className="w-100" style={{height: "75vh"}}>
         {events.map((slide) => {
           return (
@@ -18,7 +18,7 @@ export const TypeView = ({ activities }) => {
                 className="mh-10"
                 src={slide.ImagePath}
                 alt="slider image"
-                style={{ height: "75vh", width: "100%", objectFit: "cover"}}
+                style={{ height: "70vh", width: "100%", objectFit: "cover"}}
               />
               <Carousel.Caption>
                 <h3 className="bg-primary">{slide.Name}</h3>
