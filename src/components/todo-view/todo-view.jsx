@@ -39,16 +39,16 @@ export const Todo = ({ user, server, token, activities }) => {
       <Carousel className="w-100" slide={false}>
           {listItems.map((todo) => {
             return (
-              <Carousel.Item key={todo._id} style={{height: "50vh", width: "100%", overflow: "hidden"}}>
+              <Carousel.Item key={todo._id} style={{height: "50vh", width: "100%", overflow: "hidden"}} className="mx-auto">
                 <Link to={`/activities/${todo._id}`}>
                 <Carousel.Caption>
                   <h3 className="bg-primary">{todo.Name}</h3>
                 </Carousel.Caption>
                 <img
-                  style={{ height: "auto", minHeight: "50vh", maxWidth: "100%", objectFit: "cover"}}
+                  style={{ height: "auto", minHeight: "50vh", width: "100%", maxWidth: "100%", objectFit: "cover"}}
                   src={todo.ImagePath}
                   alt="slider image"
-                  className="img-fluid"
+                  className="img-fluid m-auto"
                 />
                 </Link>
               </Carousel.Item>
@@ -67,10 +67,10 @@ export const Todo = ({ user, server, token, activities }) => {
                   <h3 className="bg-primary">{completed.Name}</h3>
                 </Carousel.Caption>
                 <img
-                  style={{ height: "auto", minHeight: "50vh", maxWidth: "100%", objectFit: "cover"}}
+                  style={{ height: "auto", minHeight: "50vh", width: "100%", maxWidth: "100%", objectFit: "cover"}}
                   src={completed.ImagePath}
                   alt="slider image"
-                  className="img-responsive"
+                  className="img-fluid m-auto"
                 />
                </Link>
               </Carousel.Item>
