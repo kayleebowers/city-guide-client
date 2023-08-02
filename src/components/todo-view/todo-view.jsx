@@ -61,7 +61,7 @@ export const Todo = ({ user, server, token, activities }) => {
       <Carousel slide={false}>
           {memories.map((completed) => {
             return (
-              <Carousel.Item key={completed._id} style={{height: "50vh", width: "100%", overflow: "hidden"}}>
+              <Carousel.Item key={completed._id} style={{height: "50vh", width: "100%", overflow: "hidden"}} className="mx-auto">
                 <Link to={`/activities/${completed._id}`}>
                 <Carousel.Caption>
                   <h3 className="bg-primary">{completed.Name}</h3>
