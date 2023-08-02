@@ -127,9 +127,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                         deleteTodo();
                         setClicked(false);
                       }}
-                      className="py-2 mx-3"
+                      className="py-2 mx-1"
                     >
-                      Delete From Todo List
+                      Delete Todo
                     </Button>
                   ) : (
                     <Button
@@ -137,9 +137,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                         addToTodo();
                         setClicked(true);
                       }}
-                      className="py-2 mx-3"
+                      className="py-2 mx-1"
                     >
-                      Add To Todo List
+                      Add Todo
                     </Button>
                   )}
                 </>
@@ -148,23 +148,23 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                 <>
                   {!completed ? (
                     <Button
-                      className="py-2 mx-3"
+                      className="py-2 mx-1"
                       onClick={() => {
                         addCompleted();
                         setClicked(true);
                       }}
                     >
-                      Add To Memories
+                      Add Memory
                     </Button>
                   ) : (
                     <Button
-                      className="py-2 mx-3"
+                      className="py-2 mx-1"
                       onClick={() => {
                         deleteCompleted();
                         setClicked(false);
                       }}
                     >
-                      Remove From Memories
+                      Remove Memory
                     </Button>
                   )}
                 </>
