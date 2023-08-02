@@ -1,14 +1,12 @@
-//customization here
 $primary: #dd0000;
 
-input[type=checkbox]{
-    accent-color:  #dd0000; 
-    }
-
+// set font
 * {
     font-family: 'Lilita One', cursive;
     font-size: large;
 }
+
+// navbar brand font 
 @media (max-width: 500px) {
     .brand {
         font-size: 22px;
@@ -27,6 +25,7 @@ input[type=checkbox]{
     }
 }
 
+// todo and activity view displays
 @media (max-width: 850px) {
     .todo-view {
         flex-direction: row;
