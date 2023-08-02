@@ -17,6 +17,7 @@ export const TodoButtons = ({
       {user && (
         <Card.Body className="d-flex align-items-center justify-content-center">
           <>
+            {/* add or remove activity from todo list*/}
             {todo ? (
               <Button
                 onClick={() => {
@@ -39,6 +40,7 @@ export const TodoButtons = ({
               </Button>
             )}
 
+            {/* add or remove activity from completed list*/}
             {!completed ? (
               <Button
                 className="py-2 mx-1"
