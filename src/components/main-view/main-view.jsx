@@ -55,22 +55,15 @@ export const MainView = () => {
     localStorage.clear();
   }
 
-  // use Fischer Yates algorithm to randomize activities list
-  const shuffleArray = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-  };
+  //add function to randomize array
+  const randomize = (list) => {
+    return list.sort(() => Math.random() - 0.5);
+  }
 
-  // only randomize activities list when state changes
+  // only randomize activities list when user changes
   useEffect(() => {
-    setRandomActivities(shuffleArray(activities));
+   setRandomActivities(randomize(activities));
   }, [activities]);
-
-  // shuffleArray(activities);
 
   return (
     <BrowserRouter>
