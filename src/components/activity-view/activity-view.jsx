@@ -12,11 +12,11 @@ export const ActivityView = ({ activities }) => {
 
   return (
     <>
-      <Card className="d-flex flex-row-reverse border-primary">
+      <Card className="d-flex flex-row-reverse border-primary activity-view">
         <Card.Img
           variant="top"
           src={activity.ImagePath}
-          style={{ width: "60vw", height: "60vh", objectFit: "cover" }}
+          style={{ width: "100%", height: "60vh", objectFit: "cover" }}
           className="mx-auto"
         />
         <Card.Body className="d-flex flex-column justify-content-center">
@@ -27,8 +27,8 @@ export const ActivityView = ({ activities }) => {
               <Badge bg="primary" className="mx-2">{activity.Price}</Badge>
             </div>
           </Card.Title>
-          <Card.Text>{activity.Description} </Card.Text>
-          <Card.Text>
+          <Card.Text className="text-center">{activity.Description} </Card.Text>
+          <Card.Text className="text-center">
             <img src={Map} alt="map icon"/>
             <span className="mx-3">{activity.Address}</span> 
           </Card.Text>

@@ -16,6 +16,12 @@ input[type=checkbox]{
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .activity-view {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 @import '~bootstrap/scss/bootstrap.scss';
