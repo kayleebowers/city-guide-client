@@ -2,20 +2,34 @@ import { Col, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Todo } from "../todo-view/todo-view";
 
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
-  const [todo, setTodo] = useState(
-    user ? user.Todos.includes(activity._id) : null
-  );
+  const [todo, setTodo] = useState( user ? user.Todos.includes(activity._id) : false );
   const [clicked, setClicked] = useState(false);
 
   // track completed items
-  const [completed, setCompleted] = useState(
-    user ? user.Completed.includes(activity._id) : null
-  );
+  const [completed, setCompleted] = useState(user ? user.Completed.includes(activity._id) : null);
+
+  //fetch user data so page rerenders on change
+  useEffect(() => {
+    fetch(`${server}/users/${user._id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.log("Could not get user info")
+      }
+    }).catch((error) => {
+      console.error(error);
+    })
+  }, [user]);
 
   // add activity to todo list
   const addToTodo = () => {
@@ -29,8 +43,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
+        setUser(data);
         setTodo(true);
+        console.log(user);
       })
       .catch((error) => {
         console.error(error);
@@ -49,7 +64,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
+        setUser(data);
         setTodo(!todo);
       })
       .catch((error) => {
@@ -69,7 +84,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
+        setUser(data);
         setCompleted(true);
       })
       .catch((error) => {
@@ -88,7 +103,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
+        setUser(data);
         setCompleted(false);
       })
       .catch((error) => {
@@ -125,7 +140,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                     <Button
                       onClick={() => {
                         deleteTodo();
-                        setClicked(false);
+                        setClicked(!clicked);
                       }}
                       className="py-2 mx-1"
                     >
@@ -135,7 +150,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
                     <Button
                       onClick={() => {
                         addToTodo();
-                        setClicked(true);
+                        setClicked(!clicked);
                       }}
                       className="py-2 mx-1"
                     >
