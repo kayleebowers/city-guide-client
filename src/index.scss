@@ -40,4 +40,5 @@ $primary: #dd0000;
     }
 }
 
-@import '~bootstrap/scss/bootstrap.scss';
+@import "node_modules/bootstrap/scss/bootstrap";
+// @import '~bootstrap/scss/bootstrap.scss';
