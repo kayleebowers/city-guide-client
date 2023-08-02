@@ -45,9 +45,10 @@ export const Todo = ({ user, server, token, activities }) => {
                   <h3 className="bg-primary">{todo.Name}</h3>
                 </Carousel.Caption>
                 <img
-                  style={{ height: "60vh", width: "100%", objectFit: "cover"}}
+                  style={{ height: "auto", minHeight: "50vh", maxWidth: "100%", objectFit: "cover"}}
                   src={todo.ImagePath}
                   alt="slider image"
+                  className="img-fluid"
                 />
                 </Link>
               </Carousel.Item>
@@ -66,9 +67,10 @@ export const Todo = ({ user, server, token, activities }) => {
                   <h3 className="bg-primary">{completed.Name}</h3>
                 </Carousel.Caption>
                 <img
-                  style={{ height: "60vh", width: "100%", objectFit: "cover"}}
+                  style={{ height: "auto", minHeight: "50vh", maxWidth: "100%", objectFit: "cover"}}
                   src={completed.ImagePath}
                   alt="slider image"
+                  className="img-responsive"
                 />
                </Link>
               </Carousel.Item>
