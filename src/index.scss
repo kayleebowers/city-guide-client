@@ -9,6 +9,23 @@ input[type=checkbox]{
     font-family: 'Lilita One', cursive;
     font-size: large;
 }
+@media (max-width: 500px) {
+    .brand {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 850px) {
+    .brand {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 850px) and (max-width: 2000px) {
+    .brand {
+        font-size: 40px;
+    }
+}
 
 @media (max-width: 850px) {
     .todo-view {

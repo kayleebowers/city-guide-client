@@ -15,6 +15,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
 
   //fetch user data so page rerenders on change
   useEffect(() => {
+    if (!user) {
+      return;
+    } else {
     fetch(`${server}/users/${user._id}`, {
       method: "GET",
       headers: {
@@ -29,7 +32,9 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
     }).catch((error) => {
       console.error(error);
     })
+  }
   }, [user]);
+
 
   // add activity to todo list
   const addToTodo = () => {

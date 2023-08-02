@@ -22,16 +22,19 @@ export const ActivityView = ({ activities }) => {
         <Card.Body className="d-flex flex-column justify-content-center">
           <Card.Title>
             <h1 className="text-center pt-3">{activity.Name}</h1>
+            {/* price and type badges */}
             <div className="d-flex justify-content-center p-1 mb-3">
               <Badge bg="primary">{activity.Type}</Badge>
               <Badge bg="primary" className="mx-2">{activity.Price}</Badge>
             </div>
           </Card.Title>
           <Card.Text className="text-center">{activity.Description} </Card.Text>
+          {/* address with map icon */}
           <Card.Text className="text-center">
             <img src={Map} alt="map icon"/>
             <span className="mx-3">{activity.Address}</span> 
           </Card.Text>
+          {/* buttons */}
           <div className="d-flex justify-content-center m-2">
             <Link to={`/`}>
               <Button variant="primary" className="mx-2">More activities</Button>
