@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
+import Map from "../../img/map-icon.png";
 
 export const ActivityView = ({ activities }) => {
   //get route parameter
@@ -27,7 +28,10 @@ export const ActivityView = ({ activities }) => {
             </div>
           </Card.Title>
           <Card.Text>{activity.Description} </Card.Text>
-          <Card.Text>{activity.Address} </Card.Text>
+          <Card.Text>
+            <img src={Map} alt="map icon"/>
+            <span className="mx-3">{activity.Address}</span> 
+          </Card.Text>
           <Link to={`/`}>
             <Button variant="primary">More activities</Button>
           </Link>
@@ -36,6 +40,9 @@ export const ActivityView = ({ activities }) => {
           </a>
         </Card.Body>
       </Card>
+      <div>
+        <a target="_blank" href="https://icons8.com/icon/oezvZc5uGEeS/map">Map</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+      </div>
     </>
   );
 };
