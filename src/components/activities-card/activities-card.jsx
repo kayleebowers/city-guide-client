@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Todo } from "../todo-view/todo-view";
-import { TodoButtons } from "../todo-buttons/todo-buttons";
 
 export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
   //track todo items
@@ -117,16 +116,62 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
             borderRadius: "0",
           }}
         />
-        <TodoButtons
-          todo={todo}
-          completed={completed}
-          deleteTodo={deleteTodo}
-          setClicked={setClicked}
-          addToTodo={addToTodo}
-          addCompleted={addCompleted}
-          deleteCompleted={deleteCompleted}
-          user={user}
-        />
+        {user && (
+          <Card.Body className="d-flex align-items-center justify-content-center">
+            <>
+              {user && (
+                <>
+                  {todo ? (
+                    <Button
+                      onClick={() => {
+                        deleteTodo();
+                        setClicked(false);
+                      }}
+                      className="py-2 mx-1"
+                    >
+                      Delete Todo
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        addToTodo();
+                        setClicked(true);
+                      }}
+                      className="py-2 mx-1"
+                    >
+                      Add Todo
+                    </Button>
+                  )}
+                </>
+              )}
+              {user && (
+                <>
+                  {!completed ? (
+                    <Button
+                      className="py-2 mx-1"
+                      onClick={() => {
+                        addCompleted();
+                        setClicked(true);
+                      }}
+                    >
+                      Add Memory
+                    </Button>
+                  ) : (
+                    <Button
+                      className="py-2 mx-1"
+                      onClick={() => {
+                        deleteCompleted();
+                        setClicked(false);
+                      }}
+                    >
+                      Remove Memory
+                    </Button>
+                  )}
+                </>
+              )}
+            </>
+          </Card.Body>
+        )}
       </Card>
     </>
   );
