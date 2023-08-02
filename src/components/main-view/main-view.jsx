@@ -54,6 +54,18 @@ export const MainView = () => {
     localStorage.clear();
   }
 
+  // use Fischer Yates algorithm to randomize activities list
+  const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  };
+  
+  shuffleArray(activities);
+
   return (
     <BrowserRouter>
       <NavigationBar onLogout={onLogout} user={user} />
@@ -85,7 +97,9 @@ export const MainView = () => {
                     </>
                   );
                 })}
-                <a target="_blank" href="https://icons8.com/icon/HH1wWvmLSFYK/pegasus">Pegasus</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                <div className="d-flex justify-content-center">
+                  <a target="_blank" href="https://icons8.com/icon/HH1wWvmLSFYK/pegasus">Pegasus</a><span> icon by  </span><a target="_blank" href="https://icons8.com" >Icons8</a>
+                </div>
               </>
             }
           />
