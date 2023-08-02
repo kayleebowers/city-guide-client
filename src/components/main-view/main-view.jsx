@@ -12,6 +12,7 @@ import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [activities, setActivities] = useState([]);
+  const [randomActivities, setRandomActivities] = useState([]);
 
   //set user and token state to local storage values as default
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -64,6 +65,11 @@ export const MainView = () => {
     }
   };
 
+  // only randomize activities list when state changes
+  useEffect(() => {
+    setRandomActivities(shuffleArray(activities));
+  }, [activities]);
+
   // shuffleArray(activities);
 
   return (
@@ -81,7 +87,7 @@ export const MainView = () => {
                   <p className="text-center">Dallas, Texas, is the fourth-largest metropolitan area in the U.S. at 7.5 million people. With a 2020 census population of 1,304,379, it is the ninth-most populous city in the U.S. and the third-most populous city in Texas after Houston and San Antonio. Little wonder there is something here for everyone!</p>
                 </Col>
                 <h2>What to do...</h2>
-                {activities.map((activity) => {
+                {randomActivities.map((activity) => {
                   return (
                     <>
                       <Col
