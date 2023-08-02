@@ -27,7 +27,7 @@ export const NavigationBar = ({onLogout, user}) => {
             {/* dropdown menu */}
             <NavDropdown title="Explore the city" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to={`/activities/types/Arts`}>
-                Entertainment
+                Arts
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to={`/activities/types/Restaurant`}>
                 Restaurants

@@ -8,4 +8,13 @@ input[type=checkbox]{
 * {
     font-family: 'Lilita One', cursive;
 }
+
+@media (max-width: 850px) {
+    .todo-view {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

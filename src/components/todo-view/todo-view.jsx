@@ -34,19 +34,18 @@ export const Todo = ({ user, server, token, activities }) => {
 
   return (
     <>
-      <div className="d-flex flex-column align-items-center m-3 border border-primary">
+      <div className="d-flex flex-column align-items-center m-3 border border-primary w-100">
       <h3 className="m-4">Todo List</h3>
       <Carousel className="w-100" slide={false}>
           {listItems.map((todo) => {
             return (
-              <Carousel.Item key={todo._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
+              <Carousel.Item key={todo._id} style={{height: "50vh", width: "100%", overflow: "hidden"}}>
                 <Link to={`/activities/${todo._id}`}>
                 <Carousel.Caption>
                   <h3 className="bg-primary">{todo.Name}</h3>
                 </Carousel.Caption>
                 <img
                   style={{ height: "60vh", width: "100%", objectFit: "cover"}}
-                  className="mh-10"
                   src={todo.ImagePath}
                   alt="slider image"
                 />
@@ -56,19 +55,18 @@ export const Todo = ({ user, server, token, activities }) => {
           })}
       </Carousel >
       </div>
-      <div className="d-flex flex-column align-items-center m-3 border border-primary">
+      <div className="d-flex flex-column align-items-center m-3 border border-primary w-100">
       <h3 className="m-4">Memories You've Made</h3>
       <Carousel slide={false}>
           {memories.map((completed) => {
             return (
-              <Carousel.Item key={completed._id} style={{height: "50vh", width: "40vw", overflow: "hidden"}}>
+              <Carousel.Item key={completed._id} style={{height: "50vh", width: "100%", overflow: "hidden"}}>
                 <Link to={`/activities/${completed._id}`}>
                 <Carousel.Caption>
                   <h3 className="bg-primary">{completed.Name}</h3>
                 </Carousel.Caption>
                 <img
                   style={{ height: "60vh", width: "100%", objectFit: "cover"}}
-                  className="mh-10"
                   src={completed.ImagePath}
                   alt="slider image"
                 />
