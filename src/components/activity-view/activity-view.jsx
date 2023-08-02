@@ -10,10 +10,17 @@ export const ActivityView = ({ activities }) => {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={activity.ImagePath} />
+      <Card className="d-flex flex-row-reverse">
+        <Card.Img
+          variant="top"
+          src={activity.ImagePath}
+          style={{ width: "60vw", height: "60vh", objectFit: "cover" }}
+          className="mx-auto"
+        />
         <Card.Body>
-          <Card.Title>{activity.Name} </Card.Title>
+          <Card.Title>
+            <h1 className="text-center p-3">{activity.Name}</h1>
+          </Card.Title>
           <Card.Text>{activity.Description} </Card.Text>
           <Card.Text>{activity.Price} </Card.Text>
           <Card.Text>{activity.Address} </Card.Text>

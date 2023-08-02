@@ -63,8 +63,6 @@ export const MainView = () => {
       array[j] = temp;
     }
   };
-  
-  shuffleArray(activities);
 
   return (
     <BrowserRouter>
