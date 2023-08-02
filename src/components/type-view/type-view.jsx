@@ -7,7 +7,7 @@ export const TypeView = ({ activities }) => {
   const { type } = useParams();
   const events = activities.filter((activity) => activity.Type === type);
   return (
-    <Col lg={12} md={12} sm={10} className="border border-primary">
+    <Col lg={12} md={12} sm={10} >
       <h1 className="p-5 mt-2 text-center">{type}</h1>
       <Carousel className="w-100" style={{height: "75vh"}}>
         {events.map((slide) => {

@@ -98,7 +98,7 @@ export const ActivitiesCard = ({ activity, user, setUser, server, token }) => {
 
   return (
     <>
-      <Card style={{ height: "100%" }}>
+      <Card style={{ height: "100%" }} className="border border-primary">
         <Link to={`/activities/${activity._id}`}>
           <Button className="w-100 rounded-top" style={{ borderRadius: "0" }}>
             <Card.Title>
