@@ -21,7 +21,7 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
   //assign server variable
-  const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com";
+  const server = "https://city-guide-api-3d2f74a4c59e.herokuapp.com/";
 
   //fetch all activities from api and assign them to activities state
   useEffect(() => {
